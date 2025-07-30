@@ -53,19 +53,11 @@ const images = await getMyImages();
 
 export default async function HomePage() {
   return (
-    <main className="min-h-screen bg-gray-500">
-      <SignedOut>
-        <div className="flex h-screen items-center justify-center text-center text-2xl text-gray-500">
-          Please Sign In Above To Continue!!!
-        </div>
-      </SignedOut>
       <SignedIn>
         <div className="text-center text-3xl font-bold text-gray-800 pt-6 pb-2">
-          Welcome Back!
         
         </div>
           <Images/>
       </SignedIn>
-    </main>
-  );
+        );
 }

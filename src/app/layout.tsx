@@ -35,7 +35,8 @@ export default function RootLayout({
            */
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
-      <body className="bg-emerald-900 text-white">
+      <body className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black">
+
       <TopNav />
       {children}
       <Toaster />
