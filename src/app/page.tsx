@@ -4,18 +4,21 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import { UploadButton } from "~/utils/uploadthing";
 import { UploadDialog } from "./_components/upload-dialog";
+import { getMyImages } from "~/server/queries";
 
-async function Images(){
+export const dynamic = "force-dynamic";
+async function Images() {
 
-const mockUrl = ["https://tr.rbxcdn.com/30DAY-Avatar-0B6FE57B08B32CA517E6F1B01C7D5A62-Png/352/352/Avatar/Png/noFilter", 
-  "https://www.paramountshop.com/cdn/shop/files/spongebob-squarepants-handsome-squidward-life-size-standee-309957_grande.jpg?v=1733556648",
-  "https://a3dmf5xzqq.ufs.sh/f/JjoxSwTodBmpIImOlbMeTYzgH30d5mXS9QMKWskfpwcR7VhA",
-"https://a3dmf5xzqq.ufs.sh/f/JjoxSwTodBmp6xuQ8gZoYBhZ90jHAk7iCLwUuQztMbTrpSc4"];
+//const mockUrl = ["https://tr.rbxcdn.com/30DAY-Avatar-0B6FE57B08B32CA517E6F1B01C7D5A62-Png/352/352/Avatar/Png/noFilter", 
+//  "https://www.paramountshop.com/cdn/shop/files/spongebob-squarepants-handsome-squidward-life-size-standee-309957_grande.jpg?v=1733556648",
+//  "https://a3dmf5xzqq.ufs.sh/f/JjoxSwTodBmpIImOlbMeTYzgH30d5mXS9QMKWskfpwcR7VhA",
+//"https://a3dmf5xzqq.ufs.sh/f/JjoxSwTodBmp6xuQ8gZoYBhZ90jHAk7iCLwUuQztMbTrpSc4"];
 
-const images = mockUrl.map((url, index) => ({
-  id: index + 1,
-  url,
-})); 
+//const images = mockUrl.map((url, index) => ({
+//  id: index + 1,
+ // url,
+//})); 
+const images = await getMyImages();
 
  return (
     <div className="w-full max-w-7xl mx-auto">
@@ -33,7 +36,7 @@ const images = mockUrl.map((url, index) => ({
           >
             <div className="relative aspect-video bg-zinc-900">
               <img
-                src={image.url}
+                src={image.imageUrl}
                 alt={`Image ${image.id}`}
                 className="h-full w-full object-contain object-center"
               />
@@ -48,7 +51,7 @@ const images = mockUrl.map((url, index) => ({
   );
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <main className="min-h-screen bg-gray-500">
       <SignedOut>
@@ -56,12 +59,12 @@ export default function HomePage() {
           Please Sign In Above To Continue!!!
         </div>
       </SignedOut>
-
       <SignedIn>
         <div className="text-center text-3xl font-bold text-gray-800 pt-6 pb-2">
           Welcome Back!
+        
         </div>
-        <Images />
+          <Images/>
       </SignedIn>
     </main>
   );

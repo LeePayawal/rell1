@@ -1,9 +1,10 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { UploadButton } from "~/utils/uploadthing";
 
 export function UploadDialog(){
+  const router = useRouter();
     return(
           <UploadButton
         endpoint="imageUploader"
@@ -12,6 +13,7 @@ export function UploadDialog(){
           console.log("Files: ", res);
           // alert("Upload Completed");
           toast.success("Upload Complete");
+          router.refresh();
         }}
         onUploadError={(error: Error) => {
           // Do something with the error.
