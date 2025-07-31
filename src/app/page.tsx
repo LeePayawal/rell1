@@ -5,6 +5,7 @@ import Link from "next/link";
 import { UploadButton } from "~/utils/uploadthing";
 import { UploadDialog } from "./_components/upload-dialog";
 import { getMyImages } from "~/server/queries";
+import { ImageModal } from "./_components/image-modal";
 
 export const dynamic = "force-dynamic";
 async function Images() {
@@ -26,7 +27,6 @@ const images = await getMyImages();
       <div className="flex justify-end px-4 py-6">
         <UploadDialog />
       </div>
-
       {/* Image Grid */}
       <div className="flex flex-wrap justify-center gap-6 px-4 pb-10">
         {images.map((image) => (
@@ -34,6 +34,7 @@ const images = await getMyImages();
             key={image.id}
             className="w-64 flex flex-col rounded-lg overflow-hidden shadow-md border border-gray-200 bg-white hover:shadow-xl transition-shadow duration-300"
           >
+            <ImageModal image={image}> 
             <div className="relative aspect-video bg-zinc-900">
               <img
                 src={image.imageUrl}
@@ -41,8 +42,9 @@ const images = await getMyImages();
                 className="h-full w-full object-contain object-center"
               />
             </div>
+            </ImageModal>
             <div className="text-center py-2 text-sm font-medium text-gray-700">
-              Image #{image.id}
+              {image.imageName || image.fileName}
             </div>
           </div>
         ))}
