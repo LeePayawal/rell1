@@ -13,6 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
+import { DeleteButton } from "./delete-button";
 
 interface ImageModalProps {
     image: {
@@ -70,7 +71,7 @@ interface ImageModalProps {
                 </span>
            </div>
           <div className=""> 
-            <Button>Delete</Button>
+            <DeleteButton idAsNumber={image.id}/>
           </div>
           </div>
           </div>
