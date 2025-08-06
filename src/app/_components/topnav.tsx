@@ -27,7 +27,7 @@ export function TopNav() {
                     RELL1
                   </span>
                   <span className="text-xs text-slate-400 -mt-1 hidden sm:block">
-                    Phone Storage
+                    Phone Inventory
                   </span>
                 </div>
               </div>
@@ -132,8 +132,8 @@ export function TopNav() {
                           <Smartphone className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <div className="text-white font-semibold text-sm">RELL1 Storage</div>
-                          <div className="text-slate-400 text-xs">Phone Storage</div>
+                          <div className="text-white font-semibold text-sm">RELL1 Inventory</div>
+                          <div className="text-slate-400 text-xs">Phone Inventory</div>
                         </div>
                       </div>
                       <div className="space-y-2">
@@ -195,13 +195,13 @@ export function TopNav() {
         <div className="relative z-30 flex items-center justify-center min-h-screen pt-20">
           <div className="text-center max-w-4xl mx-auto px-4">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Phone Storage,
+              Phone Inventory
               <span className="block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Scroll Now
+                Upload Now
               </span>
             </h1>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Experience the Real Time Phone Storage Where you can see your favorite Phones.
+              Experience the Real Time Phone Inventory Where you can upload your favorite Phones.
             </p>
             <SignedOut>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

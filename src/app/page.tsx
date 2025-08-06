@@ -1,5 +1,3 @@
-
-
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import { UploadButton } from "~/utils/uploadthing";
@@ -8,20 +6,11 @@ import { getMyImages } from "~/server/queries";
 import { ImageModal } from "./_components/image-modal";
 
 export const dynamic = "force-dynamic";
+
 async function Images() {
+  const images = await getMyImages();
 
-//const mockUrl = ["https://tr.rbxcdn.com/30DAY-Avatar-0B6FE57B08B32CA517E6F1B01C7D5A62-Png/352/352/Avatar/Png/noFilter", 
-//  "https://www.paramountshop.com/cdn/shop/files/spongebob-squarepants-handsome-squidward-life-size-standee-309957_grande.jpg?v=1733556648",
-//  "https://a3dmf5xzqq.ufs.sh/f/JjoxSwTodBmpIImOlbMeTYzgH30d5mXS9QMKWskfpwcR7VhA",
-//"https://a3dmf5xzqq.ufs.sh/f/JjoxSwTodBmp6xuQ8gZoYBhZ90jHAk7iCLwUuQztMbTrpSc4"];
-
-//const images = mockUrl.map((url, index) => ({
-//  id: index + 1,
- // url,
-//})); 
-const images = await getMyImages();
-
- return (
+  return (
     <div className="w-full max-w-7xl mx-auto">
       {/* Upload button area */}
       <div className="flex justify-end px-4 py-6">
@@ -55,11 +44,101 @@ const images = await getMyImages();
 
 export default async function HomePage() {
   return (
-      <SignedIn>
-        <div className="text-center text-3xl font-bold text-gray-800 pt-6 pb-2">
-        
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+      <SignedOut>
+        {/* Hero Section */}
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Phone Mockup */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-20">
+            <div className="relative">
+              {/* Phone Frame */}
+              <div className="w-72 h-[600px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[3rem] shadow-2xl p-6">
+                <div className="w-full h-full bg-gradient-to-br from-slate-800 to-blue-900 rounded-[2.5rem] flex flex-col items-center justify-center">
+                  {/* App Icon */}
+                  <div className="w-16 h-16 bg-cyan-400 rounded-2xl mb-4 flex items-center justify-center">
+                    <div className="w-8 h-10 bg-white rounded-sm"></div>
+                  </div>
+                  <div className="text-white text-sm font-medium">RELL1 Inventory</div>
+                  <div className="text-gray-400 text-xs">Phone Inventory</div>
+                </div>
+              </div>
+              {/* Phone Home Indicator */}
+              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-white rounded-full opacity-30"></div>
+            </div>
+          </div>
+          
+          {/* Hero Content */}
+          <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            {/* Brand Header */}
+            <div className="flex items-center justify-center mb-8">
+              <div className="w-12 h-12 bg-cyan-400 rounded-xl flex items-center justify-center mr-3">
+                <div className="w-6 h-7 bg-white rounded-sm"></div>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-white">RELL1</h1>
+                <p className="text-gray-300 text-sm">Phone Inventory</p>
+              </div>
+            </div>
+            
+            {/* Main Heading */}
+            <h2 className="text-5xl md:text-7xl font-bold mb-6">
+              <span className="text-white">Phone Inventory</span>
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                Upload Now
+              </span>
+            </h2>
+            
+            {/* Subtitle */}
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+              Experience the Real Time Phone Inventory Where you can upload your favorite Phones.
+            </p>
+            
+            {/* Welcome Message */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                Welcome to Phone Storage
+              </h3>
+            </div>
+            
+            {/* CTA Button */}
+            <div className="space-y-4">
+              <Link
+                href="/sign-in"
+                className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-full hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Get Started
+              </Link>
+              <p className="text-gray-400 text-sm">Sign in to start managing your phone inventory</p>
+            </div>
+          </div>
+          
+          {/* Decorative Elements */}
+          <div className="absolute top-20 left-20 w-20 h-20 bg-cyan-400/10 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 right-20 w-32 h-32 bg-blue-400/10 rounded-full blur-xl"></div>
+          <div className="absolute top-1/2 left-10 w-16 h-16 bg-purple-400/10 rounded-full blur-xl"></div>
         </div>
+      </SignedOut>
+
+      <SignedIn>
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+          {/* Header for signed in users */}
+          <div className="text-center py-12">
+            <div className="flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-cyan-400 rounded-xl flex items-center justify-center mr-3">
+                <div className="w-6 h-7 bg-white rounded-sm"></div>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-white">RELL1</h1>
+                <p className="text-gray-300 text-sm">Phone Inventory</p>
+              </div>
+            </div>
+            <h2 className="text-4xl font-bold text-white mb-2">Your Phone Collection</h2>
+            <p className="text-gray-300">Manage and organize your phone inventory</p>
+          </div>
           <Images/>
+        </div>
       </SignedIn>
-        );
+    </div>
+  );
 }
